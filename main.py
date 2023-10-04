@@ -555,26 +555,6 @@ data_init1718.to_excel('TFM_MUSI-Instrucciones_autor_LaTeX/resultados/data_init1
 
 
 
-# ESTRATEGIA TRADING
-
-
-
-
-
-
-
-
-
-' EXPORTADO DE DATOS '
-
-
-
-#data_init.to_excel('data_init.xlsx')
-
-#predicts.to_excel('predicts.xlsx')
-#resultados.to_excel('resultados.xlsx')
-#data.to_excel('data.xlsx')
-
 
 
 
