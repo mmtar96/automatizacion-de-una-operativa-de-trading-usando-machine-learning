@@ -105,43 +105,4 @@ def macd(mPrice, pme1, pme2):
             macd.append(macd_val)
     macd = pd.DataFrame({'MACD' : macd})
     return macd
-            
-
-'''
-
-# OSCILADOR McCLEAN [INDICE GLOBAL]
-
-# INDICCE ACUMULATIVO McCLEAN [INDICE GLOBAL]
-
-# INDICE ARMS [INDICE GLOBAL]
-
-# INDICE NUEVO MAX - NUEVO MIN
-
-def inmaxmin(cierre_max, cierre_min):
-    maxin_all = []
-    minim_all = []
-    maxin_all.append(cierre_max[0], cierre_min[0])
-    for i in range(len(cierre_max)):
-        i = i + 1
-        try:
-            if  cierre_max[i-1] < cierre_max[i]:
-                minim_all.append(cierre_max[i])
-            else:
-                minim_all.append(cierre_max[i-1])
-        except:
-            print("algo va mal al alza")
-        
-        try:
-            if cierre_min[i-1] > cierre_min[i]:
-                maxin_all.append(cierre_min[i])
-            else:
-                maxin_all.append(cierre_min[i-1])
-        except:
-            print("algo va mal al a la baja")
-          
-            
-'''
-            
-    
-            
     
