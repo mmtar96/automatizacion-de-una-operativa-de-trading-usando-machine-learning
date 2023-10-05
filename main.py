@@ -48,7 +48,7 @@ def preprocesado(data_bid, data_ask):
 ' CALCULO DE INDICADORES: '
   
 
-def ind_tec(dataset, target_price, p1=14, p2=26, p3=50, p_rsi=14, p_macd1=14, p_macd2=26, amp=25):
+def ind_tec(dataset, target_price, p1=14, p2=29, p3=50, p_rsi=14, p_macd1=14, p_macd2=26, amp=25):
     mPrice = dataset['Open']
     # SMA    
     sma14 = it.sma(mPrice, periodo=p1)
@@ -153,6 +153,22 @@ def ind_tec(dataset, target_price, p1=14, p2=26, p3=50, p_rsi=14, p_macd1=14, p_
                          'EMA14' : ema14.iloc[:,0],
                          'EMA29' : ema29.iloc[:,0],
                          'EMA50' : ema50.iloc[:,0],
+                         'RSI' : rsi.iloc[:,0],
+                         'MACD' : macd.iloc[:,0].values,     
+                         'Target_Price' : target_price})
+    
+    # Matriz de correlacion #correlacion de pearson
+    correlation_matrix = data.corr(method='pearson')
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1)
+    plt.title('Matriz de Correlación')
+    plt.show()
+    
+    data = pd.DataFrame({'Time' : dataset['Date'],
+                         'Volume' : vol,
+                         'SMA14_p' : sma14_p.iloc[:,0],
+                         'SMA29_p' : sma29_p.iloc[:,0],
+                         'SMA50_p' : sma50_p.iloc[:,0],
                          'RSI' : rsi.iloc[:,0],
                          'MACD' : macd.iloc[:,0].values,     
                          'Target_Price' : target_price})
@@ -419,7 +435,7 @@ def models(X_train, X_test, y_train, y_test, X_train_sc, X_test_sc, y_train_sc, 
                              'Modelo Regresion Polinomica sc' : results_model_poly_sc,
                              'Modelo SVR - kernel : rbf sc' : results_model_svr_rbf_sc,
                              'Modelo Arbol de decision sc' : results_model_arbol_decision_sc,
-                             'Modelo Bosques aleatorios - crit: f_mse sc' : results_model_bosques_aleatorios_fmse_sc,
+                             'Modelo Bosques aleatorios - crit: f_mse sc' : results_model_bosques_aleatorios_fmse_sc
                              })
     print(resultados)
     
