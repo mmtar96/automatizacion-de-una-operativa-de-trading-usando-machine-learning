@@ -24,11 +24,8 @@ import time
 import seaborn as sns
 
 # LIBRERIAS DESARROLLADAS
-%cd code/libs
 import ipdata as ip
 import indtechv2 as it
-%cd ..
-%cd ..
 
 
 ' CARGA DE DATOS '
